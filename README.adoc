@@ -1,0 +1,33 @@
+= Overview
+
+This project implements a sample service broker that adheres to the https://www.openservicebrokerapi.org/[Open Service Broker API] using the https://cloud.spring.io/spring-cloud-open-service-broker/[Spring Cloud Open Service Broker] framework.
+
+It's purpose is to let users to simply understand how to create a new service broker and for this reason the only action that it will do on service binding is to provide a value called "secret" containing a random UUID.
+
+== Compatibility
+
+* https://projects.spring.io/spring-framework/[Spring Framework] 5.x
+* https://projects.spring.io/spring-boot/[Spring Boot] 2.x
+* https://cloud.spring.io/spring-cloud-open-service-broker/[Spring Cloud Open Service Broker] 2.0.1.RELEASE
+
+== Getting Started
+
+This service broker manages instances of a custom service.
+
+When a service instance is https://github.com/openservicebrokerapi/servicebroker/blob/v2.13/spec.md#provisioning[provisioned], a new data structure is allocated in memory.
+
+When a https://github.com/openservicebrokerapi/servicebroker/blob/v2.13/spec.md#credentials[service binding] is created, a URL and basic auth credentials are provided in the binding credentials. The custom URL and credentials can be used to add, retrieve, delete, and list books in the custom. Unique credentials are generated for each service binding.
+
+== Build
+
+This project requires Java 8 at a minimum.
+
+=== To compile the project and run tests
+
+    ./mvnw clean package
+
+== Deploy
+
+Once the project is built, it can be deployed and registered to Cloud Foundry.
+
+* link:deploy/cloudfoundry/README.adoc[deploy to Cloud Foundry]
