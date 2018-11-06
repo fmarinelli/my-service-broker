@@ -47,9 +47,9 @@ public class MyServiceBrokerBinding implements ServiceInstanceBindingService {
 
     @Override
     public void deleteServiceInstanceBinding(DeleteServiceInstanceBindingRequest request) {
-        if(repository.existsById(request.getBindingId())) {
-            repository.deleteById(request.getBindingId());
+        if(!repository.existsById(request.getBindingId())) {
+            throw new ServiceInstanceBindingDoesNotExistException(request.getServiceInstanceId());
         }
-        throw new ServiceInstanceBindingDoesNotExistException(request.getServiceInstanceId());
+        repository.deleteById(request.getBindingId());
     }
 }
