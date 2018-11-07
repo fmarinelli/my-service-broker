@@ -1,0 +1,7 @@
+---
+applications:
+- name: my-service-broker
+  memory: 1G
+  path: ../../target/my-service-broker-1.0.0-SNAPSHOT.jar
+
+
